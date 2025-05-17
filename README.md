@@ -23,7 +23,6 @@ This server implements the Tools functionality of MCP, offering a suite of tools
 
 ## Features
 
-- **Automatic IoC Extraction**: Paste logs or observables and let Cyberbro extract and analyze them.
 - **Multi-Service Reputation Checks**: Query IPs, domains, hashes, URLs, and Chrome extension IDs across many threat intelligence sources.
 - **Integrated Reporting**: Get detailed, exportable reports and analysis history.
 - **Platform Integrations**: Supports Microsoft Defender for Endpoint, CrowdStrike, OpenCTI, and more.
@@ -77,7 +76,7 @@ This server implements the Tools functionality of MCP, offering a suite of tools
     ```
 4. Start the MCP server:
     ```
-    python -m mcp_cyberbro
+    python mcp-cyberbro.py
     ```
     The server will listen for MCP protocol messages on stdin/stdout and use the environment variables as shown in the Claude Desktop configuration example.
 
