@@ -76,7 +76,7 @@ This server implements the Tools functionality of MCP, offering a suite of tools
     ```
 4. Start the MCP server:
     ```
-    python mcp-cyberbro.py
+    python mcp-cyberbro-server.py
     ```
     The server will listen for MCP protocol messages on stdin/stdout and use the environment variables as shown in the Claude Desktop configuration example.
 
