@@ -1,0 +1,16 @@
+# Ignore .bak
+*.bak
+
+__pycache__/
+.dccache
+.pytest_cache
+.qodo
+.ruff_cache
+.venv
+*.csv
+*.db
+*.xlsx
+data/
+log*/
+secrets.json
+tests/
