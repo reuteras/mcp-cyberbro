@@ -8,9 +8,9 @@
 
 </p>
 
-A Model Context Protocol (MCP) server for Cyberbro that provides a comprehensive interface for extracting and analyzing Indicators of Compromise (IoCs) from unstructured input, and checking their reputation using multiple threat intelligence services. \
+![mcp-cyberbro-demo](https://github.com/user-attachments/assets/99ee5538-c95a-40ca-bff5-3cdf3aa86235)
 
-Checkout [Cyberbro](https://github.com/stanfrbd/cyberbro) repository for more information about the platform.
+A Model Context Protocol (MCP) server for Cyberbro that provides a comprehensive interface for extracting and analyzing Indicators of Compromise (IoCs) from unstructured input, and checking their reputation using multiple threat intelligence services.
 
 ## Overview
 
