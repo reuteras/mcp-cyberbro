@@ -15,158 +15,158 @@ ENGINES = [
     {
         "name": "reverse_dns",
         "label": "Reverse DNS",
-        "supports": ["default", "domain", "IP", "abuse", "free_no_key"],
-        "explanation": "Performs a reverse DNS lookup for IP, domain, URL (on the Cyberbro machine)"
+        "supports": ["domain", "IP", "abuse"],
+        "description": "Performs a reverse DNS lookup (local DNS) for IP, domain, URL (on the Cyberbro machine)"
     },
     {
         "name": "rdap",
         "label": "RDAP (ex Whois)",
-        "supports": ["default", "abuse", "domain", "free_no_key"],
-        "explanation": "Checks RDAP (ex Whois) record for domain, URL"
+        "supports": ["abuse", "domain"],
+        "description": "Checks RDAP (ex Whois) record for domain, URL"
     },
     {
         "name": "ipquery",
         "label": "IPquery",
-        "supports": ["default", "IP", "risk", "VPN", "proxy", "free_no_key"],
-        "explanation": "Checks IPquery for IP, reversed obtained IP for a given domain/URL"
+        "supports": ["IP", "risk", "VPN", "proxy", "geoloc"],
+        "description": "Checks IPquery for IP, reversed obtained IP for a given domain/URL"
     },
     {
         "name": "abuseipdb",
         "label": "AbuseIPDB",
-        "supports": ["risk"],
-        "explanation": "Checks AbuseIPDB for IP, reversed obtained IP for a given domain/URL"
+        "supports": ["risk", "IP"],
+        "description": "Checks AbuseIPDB for IP, reversed obtained IP for a given domain/URL"
     },
     {
         "name": "ipinfo",
         "label": "IPinfo",
-        "supports": ["IP"],
-        "explanation": "Checks IPinfo for IP, reversed obtained IP for a given domain/URL"
+        "supports": ["IP", "geoloc"],
+        "description": "Checks IPinfo for IP, reversed obtained IP for a given domain/URL"
     },
     {
         "name": "virustotal",
         "label": "VirusTotal",
         "supports": ["hash", "risk", "IP", "domain", "URL"],
-        "explanation": "Checks VirusTotal for IP, domain, URL, hash"
+        "description": "Checks VirusTotal for IP, domain, URL, hash"
     },
     {
         "name": "spur",
         "label": "Spur.us",
-        "supports": ["VPN", "proxy", "free_no_key", "scraping"],
-        "explanation": "Scraps Spur.us for IP, reversed obtained IP for a given domain/URL"
+        "supports": ["VPN", "proxy", "IP"],
+        "description": "Scraps Spur.us for IP, reversed obtained IP for a given domain/URL"
     },
     {
         "name": "mde",
         "label": "Microsoft Defender for Endpoint",
         "supports": ["hash", "IP", "domain", "URL"],
-        "explanation": "Checks Microsoft Defender for Endpoint"
+        "description": "Checks Microsoft Defender for Endpoint EDR API for IP, domain, URL, hash"
     },
     {
         "name": "crowdstrike",
         "label": "CrowdStrike",
         "supports": ["hash", "IP", "domain", "URL"],
-        "explanation": "Checks CrowdStrike for IP, domain, URL, hash"
+        "description": "Checks CrowdStrike EDR for IP, domain, URL, hash using Falcon API"
     },
     {
         "name": "google_safe_browsing",
         "label": "Google Safe Browsing",
-        "supports": ["risk", "domain", "IP"],
-        "explanation": "Checks Google Safe Browsing for IP, domain, URL"
+        "supports": ["risk", "domain", "IP", "URL"],
+        "description": "Checks Google Safe Browsing for IP, domain, URL"
     },
     {
         "name": "shodan",
         "label": "Shodan",
         "supports": ["ports", "IP"],
-        "explanation": "Checks Shodan, reversed obtained IP for a given domain/URL"
+        "description": "Checks Shodan, reversed obtained IP for a given domain/URL"
     },
     {
         "name": "phishtank",
         "label": "Phishtank",
-        "supports": ["risk", "domain", "URL", "free_no_key"],
-        "explanation": "Checks Phishtank for domains, URL"
+        "supports": ["risk", "domain", "URL"],
+        "description": "Checks Phishtank for domains, URL"
     },
     {
         "name": "threatfox",
         "label": "ThreatFox",
-        "supports": ["IP", "domain", "URL", "free_no_key"],
-        "explanation": "Checks ThreatFox by Abuse.ch for IP, domains, URL"
+        "supports": ["IP", "domain", "URL"],
+        "description": "Checks ThreatFox by Abuse.ch for IP, domains, URL"
     },
     {
         "name": "urlscan",
         "label": "URLscan",
-        "supports": ["domain", "URL", "IP", "hash", "free_no_key"],
-        "explanation": "Checks URLscan for all types of observable"
+        "supports": ["domain", "URL", "IP", "hash"],
+        "description": "Checks URLscan for all types of observable"
     },
     {
         "name": "google",
         "label": "Google",
-        "supports": ["domain", "URL", "IP", "hash", "free_no_key", "scraping"],
-        "explanation": "Scraps Google search results for all types of observable"
+        "supports": ["domain", "URL", "IP", "hash", "chrome_extension_id", "edge_extension_id"],
+        "description": "Scraps Google search results for all types of observable"
     },
     {
         "name": "github",
         "label": "Github",
-        "supports": ["domain", "URL", "IP", "hash", "free_no_key", "scraping"],
-        "explanation": "Get Github grep.app API search results for all types of observable"
+        "supports": ["domain", "URL", "IP", "hash", "chrome_extension_id", "edge_extension_id"],
+        "description": "Get Github grep.app API search results for all types of observable"
     },
     {
         "name": "ioc_one_html",
         "label": "Ioc.One (HTML)",
-        "supports": ["domain", "URL", "IP", "hash", "scraping"],
-        "explanation": "Scraps (can be long) Ioc.One HTML search results for all types of observable"
+        "supports": ["domain", "URL", "IP", "hash", "chrome_extension_id", "edge_extension_id"],
+        "description": "Scraps (can be long) Ioc.One HTML search results for all types of observable"
     },
     {
         "name": "ioc_one_pdf",
         "label": "Ioc.One (PDF)",
-        "supports": ["domain", "URL", "IP", "hash", "scraping"],
-        "explanation": "Scraps (can be long) Ioc.One PDF search results for all types of observable"
+        "supports": ["domain", "URL", "IP", "hash", "chrome_extension_id", "edge_extension_id"],
+        "description": "Scraps (can be long) Ioc.One PDF search results for all types of observable"
     },
     {
         "name": "opencti",
         "label": "OpenCTI",
         "supports": ["domain", "URL", "IP", "hash"],
-        "explanation": "Searches OpenCTI results for all types of observable"
+        "description": "Searches OpenCTI results for all types of observable"
     },
     {
         "name": "abusix",
         "label": "Abusix",
-        "supports": ["abuse", "free_no_key"],
-        "explanation": "Checks abuse contact with Abusix for IP, reversed obtained IP for a given domain/URL"
+        "supports": ["abuse", "IP"],
+        "description": "Checks abuse contact with Abusix for IP, reversed obtained IP for a given domain/URL"
     },
     {
         "name": "hudsonrock",
         "label": "Hudson Rock",
-        "supports": ["domain", "URL", "email", "free_no_key"],
-        "explanation": "Searches Hudson Rocks results for domains, URL, Email"
+        "supports": ["domain", "URL", "email", "infostealers", "malware"],
+        "description": "Searches Hudson Rocks results for domains, URL, Email"
     },
     {
         "name": "webscout",
         "label": "WebScout",
-        "supports": ["IP"],
-        "explanation": "Checks WebScout for IP, reversed obtained IP for a given domain / URL"
+        "supports": ["IP", "risk", "geoloc", "VPN", "proxy"],
+        "description": "Checks WebScout for IP, reversed obtained IP for a given domain / URL"
     },
     {
         "name": "criminalip",
         "label": "CriminalIP",
-        "supports": ["IP"],
-        "explanation": "Checks CriminalIP for IP, reversed obtained IP for a given domain / URL"
+        "supports": ["IP", "risk", "VPN", "proxy"],
+        "description": "Checks CriminalIP for IP, reversed obtained IP for a given domain / URL"
     },
     {
         "name": "alienvault",
         "label": "Alienvault",
-        "supports": ["IP"],
-        "explanation": "Checks Alienvault for IP, domain, URL, hash"
+        "supports": ["IP", "domain", "URL", "hash", "risk"],
+        "description": "Checks Alienvault for IP, domain, URL, hash"
     },
     {
         "name": "misp",
         "label": "MISP",
         "supports": ["IP", "domain", "URL", "hash"],
-        "explanation": "Checks MISP for IP, domain, URL, hash"
+        "description": "Checks MISP for IP, domain, URL, hash"
     },
     {
         "name": "google_dns",
         "label": "Google DNS (common records)",
         "supports": ["IP", "domain", "URL"],
-        "explanation": "Checks Google common DNS records (A, AAAA, CNAME, NS, MX, TXT, PTR) for IP, domain, URL"
+        "description": "Checks Google common DNS records (A, AAAA, CNAME, NS, MX, TXT, PTR) for IP, domain, URL"
     }
 ]
 
@@ -181,7 +181,7 @@ async def handle_list_resources() -> list[types.Resource]:
         types.Resource(
             uri=AnyUrl(f"cyberbro://engine/{engine['name']}"),
             name=engine["label"],
-            description=engine["explanation"],
+            description=engine["description"],
             mimeType="application/json",
         )
         for engine in ENGINES
@@ -211,11 +211,11 @@ async def list_tools() -> list[types.Tool]:
     return [
         types.Tool(
             name="analyze_observable",
-            description="Trigger an analysis for a given observable (IP, domain, URL, hash, chrome extension id) using Cyberbro.",
+            description="Trigger an analysis for a given observable (IP, domain, URL, hash, chrome extension id) using Cyberbro. It can support multiple observables at once separated by spaces.",
             inputSchema={
                 "type": "object",
                 "properties": {
-                    "text": {"type": "string", "description": "Observable to analyze"},
+                    "text": {"type": "string", "description": "Observable(s) to analyze"},
                     "engines": {"type": "array", "items": {"type": "string"}, "description": "List of engine names"}
                 },
                 "required": ["text", "engines"]

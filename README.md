@@ -8,7 +8,9 @@
 
 </p>
 
-A Model Context Protocol (MCP) server for Cyberbro that provides a comprehensive interface for extracting and analyzing Indicators of Compromise (IoCs) from unstructured input, and checking their reputation using multiple threat intelligence services.
+A Model Context Protocol (MCP) server for Cyberbro that provides a comprehensive interface for extracting and analyzing Indicators of Compromise (IoCs) from unstructured input, and checking their reputation using multiple threat intelligence services. \
+
+Checkout [Cyberbro](https://github.com/stanfrbd/cyberbro) repository for more information about the platform.
 
 ## Overview
 
@@ -43,6 +45,7 @@ This server implements the Tools functionality of MCP, offering a suite of tools
 1. Export your Cyberbro config as an environment variable:
    ```
     export CYBERBRO_URL=http://localhost:5000
+    # The API prefix is optional, but if you have a custom prefix, set it here.
     export API_PREFIX=api
    ```
 
@@ -82,7 +85,10 @@ This server implements the Tools functionality of MCP, offering a suite of tools
 
 ## Usage
 
-### Using with Claude Desktop (Docker)
+### Using with Claude Desktop (Docker) - Recommended
+
+> [!NOTE]
+> In this configuration, make sure Docker is installed and running on your machine (e.g., Docker Desktop).
 
 To use this MCP server with Claude Desktop, add the following to your Claude Desktop config file (`claude_desktop_config.json`):
 
@@ -109,6 +115,10 @@ To use this MCP server with Claude Desktop, add the following to your Claude Des
 ```
 
 ## Using with Claude Desktop (Local)
+
+> [!WARNING]
+> In this configuration, make sure to use `venv` or `uv` to avoid conflicts with other Python packages.
+
 To use this MCP server with Claude Desktop locally, add the following to your Claude Desktop config file (`claude_desktop_config.json`):
 
 ```json
@@ -116,7 +126,7 @@ To use this MCP server with Claude Desktop locally, add the following to your Cl
   "cyberbro": {
     "command": "python",
     "args": [
-      "C:\\Users\\path\\to\\mcp-cyberbro.py"
+      "C:\\Users\\path\\to\\mcp-cyberbro-server.py"
     ],
     "env": {
       "CYBERBRO_URL": "http://localhost:5000",
@@ -193,6 +203,10 @@ I want to analyze the domain example.com. What can Cyberbro tell me about it?
 Use max 3 engines.
 ```
 
+```
+Analyze these observables with Cyberbro: suspicious-domain.com, 8.8.8.8, and 44d88612fea8a8f36de82e1278abb02f. Use all available engines.
+```
+
 ### Observable Analysis
 
 ```
@@ -200,6 +214,14 @@ I found this (hash|domain|url|ip|extension) Can you submit it for analysis to Cy
 ```
 
 These example queries show how Cyberbro leverages LLMs to interpret your intent and automatically select the right MCP tools, allowing you to interact with Cyberbro easily—without needing to make the analysis yourself.
+
+### OSINT investigation
+
+```
+Create an OSINT report for the domain example.com using Cyberbro.
+Use all available engines. and pivot on the results for more information.
+Use a maximum of 10 analysis requests.
+```
 
 ## License
 
