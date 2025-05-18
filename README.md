@@ -12,6 +12,8 @@
 
 A Model Context Protocol (MCP) server for Cyberbro that provides a comprehensive interface for extracting and analyzing Indicators of Compromise (IoCs) from unstructured input, and checking their reputation using multiple threat intelligence services.
 
+Checkout [Cyberbro](https://github.com/stanfrbd/cyberbro) repository for more information about the platform.
+
 ## Overview
 
 This MCP server enables interaction with the Cyberbro platform through the Model Context Protocol. MCP is a standard that allows applications to provide context and functionality to Large Language Models (LLMs) in a secure, standardized way—similar to a web API, but designed for LLM integrations.
