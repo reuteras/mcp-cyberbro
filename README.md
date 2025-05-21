@@ -138,9 +138,43 @@ To use this MCP server with Claude Desktop locally, add the following to your Cl
 }
 ```
 
-
 > [!IMPORTANT]
 > **Make sure you have exported your Cyberbro config as environment variables** (e.g., `CYBERBRO_URL` and `API_PREFIX`) **before starting Claude Desktop**. This ensures the MCP server can connect to your Cyberbro instance correctly.
+
+## Using with other LLMs and MCP Clients
+This MCP server can be used with any LLM or MCP client that supports the Model Context Protocol. The server listens for MCP protocol messages on stdin/stdout, making it compatible with various LLMs and clients. BUT, it is important to note that the server is designed to work with LLMs that can interpret and execute the MCP commands correctly. I tried it personlly with OpenAI (in Open Web UI) and it is not as good as Claude Desktop.
+
+Documentation for other LLMs and MCP clients with Open Web UI: https://docs.openwebui.com/openapi-servers/mcp/
+
+It uses a OpenAPI proxy to expose the MCP server as an OpenAPI server, allowing you to interact with it using standard HTTP requests. This makes it easy to integrate with other applications and services that support OpenAPI.
+
+## Example of usage with OpenAPI Proxy
+
+```
+uvx mcpo --port 8000 -- uv run mcp-cyberbro-server.py --cyberbro_url "http://cyberbro.lab.local"
+```
+
+```bash
+uvx mcpo --port 8000 -- uv run mcp-cyberbro-server.py --cyberbro_url "http://cyberbro.lab.local"
+Starting MCP OpenAPI Proxy on 0.0.0.0:8000 with command: uv run mcp-cyberbro-server.py --cyberbro_url http://cyberbro.lab.local
+2025-05-21 11:02:57,819 - INFO - Starting MCPO Server...
+2025-05-21 11:02:57,819 - INFO -   Name: MCP OpenAPI Proxy
+2025-05-21 11:02:57,819 - INFO -   Version: 1.0
+2025-05-21 11:02:57,819 - INFO -   Description: Automatically generated API from MCP Tool Schemas
+2025-05-21 11:02:57,819 - INFO -   Hostname: docker-services
+2025-05-21 11:02:57,819 - INFO -   Port: 8000
+2025-05-21 11:02:57,819 - INFO -   API Key: Not Provided
+2025-05-21 11:02:57,819 - INFO -   CORS Allowed Origins: ['*']
+2025-05-21 11:02:57,819 - INFO -   Path Prefix: /
+2025-05-21 11:02:57,819 - INFO - Configuring for a single Stdio MCP Server with command: uv run mcp-cyberbro-server.py --cyberbro_url http://cyberbro.lab.local
+2025-05-21 11:02:57,820 - INFO - Uvicorn server starting...
+INFO:     Started server process [3920625]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+```
+
+**You must then choose the correct configuration for your LLM / desktop app.**
 
 ### Using with Other MCP Clients
 
