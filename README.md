@@ -65,7 +65,7 @@ This server implements the Tools functionality of MCP, offering a suite of tools
     ```
 2. Install the required dependencies:
     ```
-    pip install -r requirements.txt
+    uv run pip install -r requirements.txt
     ```
 3. Set environment variables for MCP configuration **or** provide them as CLI arguments:
 
@@ -77,11 +77,11 @@ This server implements the Tools functionality of MCP, offering a suite of tools
 
     **Option B: Using CLI arguments**
     ```
-    python mcp-cyberbro-server.py --cyberbro_url http://localhost:5000 --api_prefix api
+    uv run mcp-cyberbro-server.py --cyberbro_url http://localhost:5000 --api_prefix api
     ```
 4. Start the MCP server:
     ```
-    python mcp-cyberbro-server.py
+    uv run mcp-cyberbro-server.py
     ```
     The server will listen for MCP protocol messages on stdin/stdout and use the environment variables as shown in the Claude Desktop configuration example.
 
@@ -126,8 +126,9 @@ To use this MCP server with Claude Desktop locally, add the following to your Cl
 ```json
 "mcpServers": {
   "cyberbro": {
-    "command": "python",
+    "command": "uv",
     "args": [
+      "run",
       "C:\\Users\\path\\to\\mcp-cyberbro-server.py"
     ],
     "env": {
