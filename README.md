@@ -150,25 +150,49 @@ It uses a OpenAPI proxy to expose the MCP server as an OpenAPI server, allowing 
 
 ## Example of usage with OpenAPI Proxy
 
-```
-uvx mcpo --port 8000 -- uv run mcp-cyberbro-server.py --cyberbro_url "http://cyberbro.lab.local"
+1. Creata a `config.json` file in the mcp folder with the following content:
+```json
+{
+    "mcpServers": {
+        "cyberbro": {
+            "command": "uv",
+            "args": [
+                "run",
+                "./mcp-cyberbro-server.py"
+            ],
+            "env": {
+                "CYBERBRO_URL": "https://cyberbro.lab.local",
+                "API_PREFIX": "api"
+            }
+        }
+    }
+}
 ```
 
-```bash
-uvx mcpo --port 8000 -- uv run mcp-cyberbro-server.py --cyberbro_url "http://cyberbro.lab.local"
-Starting MCP OpenAPI Proxy on 0.0.0.0:8000 with command: uv run mcp-cyberbro-server.py --cyberbro_url http://cyberbro.lab.local
-2025-05-21 11:02:57,819 - INFO - Starting MCPO Server...
-2025-05-21 11:02:57,819 - INFO -   Name: MCP OpenAPI Proxy
-2025-05-21 11:02:57,819 - INFO -   Version: 1.0
-2025-05-21 11:02:57,819 - INFO -   Description: Automatically generated API from MCP Tool Schemas
-2025-05-21 11:02:57,819 - INFO -   Hostname: docker-services
-2025-05-21 11:02:57,819 - INFO -   Port: 8000
-2025-05-21 11:02:57,819 - INFO -   API Key: Not Provided
-2025-05-21 11:02:57,819 - INFO -   CORS Allowed Origins: ['*']
-2025-05-21 11:02:57,819 - INFO -   Path Prefix: /
-2025-05-21 11:02:57,819 - INFO - Configuring for a single Stdio MCP Server with command: uv run mcp-cyberbro-server.py --cyberbro_url http://cyberbro.lab.local
-2025-05-21 11:02:57,820 - INFO - Uvicorn server starting...
-INFO:     Started server process [3920625]
+2. Run the MCP server:
+
+```
+uvx mcpo --config config.json --port 8000"
+```
+
+3. The server will start and listen for requests on port 8000. You can access the OpenAPI documentation at `http://localhost:8000/docs`.
+
+```
+Starting MCP OpenAPI Proxy with config file: config.json
+2025-05-21 14:15:01,480 - INFO - Starting MCPO Server...
+2025-05-21 14:15:01,480 - INFO -   Name: MCP OpenAPI Proxy
+2025-05-21 14:15:01,480 - INFO -   Version: 1.0
+2025-05-21 14:15:01,480 - INFO -   Description: Automatically generated API from MCP Tool Schemas
+2025-05-21 14:15:01,480 - INFO -   Hostname: docker-services
+2025-05-21 14:15:01,480 - INFO -   Port: 8000
+2025-05-21 14:15:01,480 - INFO -   API Key: Not Provided
+2025-05-21 14:15:01,480 - INFO -   CORS Allowed Origins: ['*']
+2025-05-21 14:15:01,480 - INFO -   Path Prefix: /
+2025-05-21 14:15:01,481 - INFO - Loading MCP server configurations from: config.json
+2025-05-21 14:15:01,481 - INFO - Configured MCP Servers:
+2025-05-21 14:15:01,481 - INFO -   Configuring Stdio MCP Server 'cyberbro' with command: uv with args: ['run', './mcp-cyberbro-server.py']
+2025-05-21 14:15:01,481 - INFO - Uvicorn server starting...
+INFO:     Started server process [7331]
 INFO:     Waiting for application startup.
 INFO:     Application startup complete.
 INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
@@ -176,9 +200,9 @@ INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
 
 **You must then choose the correct configuration for your LLM / desktop app.**
 
-### Using with Other MCP Clients
+You can configure your MCP client to connect to the server (for instance) at `http://localhost:8000/cyberbro`. 
 
-This MCP server is designed to be used with any MCP-compatible client. The server listens for MCP protocol messages on stdin/stdout, making it compatible with various MCP clients that can execute Docker containers.
+The OpenAPI specification will be available (for instance) at `http://localhost:8000/cyberbro/openapi.json`.
 
 ## Available Tools
 
