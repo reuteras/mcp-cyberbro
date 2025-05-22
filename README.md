@@ -159,6 +159,9 @@ It uses a OpenAPI proxy to expose the MCP server as an OpenAPI server, allowing 
 
 ## Example of usage with OpenAPI Proxy
 
+> [!TIP]
+> Make sure to install `mcpo` via `pip install mcpo` or via `uv`
+
 1. Creata a `config.json` file in the mcp folder with the following content:
 ```json
 {
@@ -181,10 +184,10 @@ It uses a OpenAPI proxy to expose the MCP server as an OpenAPI server, allowing 
 2. Run the MCP server:
 
 ```
-uvx mcpo --config config.json --port 8000"
+uvx mcpo --config config.json --port 8000
 ```
 
-3. The server will start and listen for requests on port 8000. You can access the OpenAPI documentation at `http://localhost:8000/docs`.
+3. The server will start and listen for requests on port 8000. You can access the OpenAPI documentation (for instance) at `http://localhost:8000/docs`.
 
 ```
 Starting MCP OpenAPI Proxy with config file: config.json
@@ -212,6 +215,15 @@ INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
 You can configure your MCP client to connect to the server (for instance) at `http://localhost:8000/cyberbro`. 
 
 The OpenAPI specification will be available (for instance) at `http://localhost:8000/cyberbro/openapi.json`.
+
+## Example with Open Web UI
+
+> [!IMPORTANT]
+> Make sure you use Native function calling and a MCP compatible model (e.g. OpenAI: `gpt-4o`)
+
+![image](https://github.com/user-attachments/assets/3501449c-4153-427c-b927-872de01e73d7)
+
+Doc here: https://docs.openwebui.com/openapi-servers/open-webui#optional-step-4-use-native-function-calling-react-style-tool-use-
 
 ## Available Tools
 
