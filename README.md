@@ -47,11 +47,9 @@ This server implements the Tools functionality of MCP, offering a suite of tools
 1. Export your Cyberbro config as an environment variable:
    ```
     export CYBERBRO_URL=http://localhost:5000
-    # The API prefix is optional, but if you have a custom prefix, set it here.
-    export API_PREFIX=api
    ```
 
-3. Pull the Docker image from GitHub Container Registry:
+3. Pull the Docker image from GitHub Container Registry (careful, you must be logged in):
    ```
    docker pull ghcr.io/stanfrbd/mcp-cyberbro:latest
    ```
@@ -72,18 +70,28 @@ This server implements the Tools functionality of MCP, offering a suite of tools
     **Option A: Using environment variables**
     ```
     export CYBERBRO_URL=http://localhost:5000
-    export API_PREFIX=api
     ```
 
     **Option B: Using CLI arguments**
     ```
-    uv run mcp-cyberbro-server.py --cyberbro_url http://localhost:5000 --api_prefix api
+    uv run mcp-cyberbro-server.py --cyberbro_url http://localhost:5000
     ```
+
 4. Start the MCP server:
     ```
-    uv run mcp-cyberbro-server.py
+    uv run mcp-cyberbro-server.py # env variables already set
     ```
     The server will listen for MCP protocol messages on stdin/stdout and use the environment variables as shown in the Claude Desktop configuration example.
+
+### Optional environment variables
+
+- `SSL_VERIFY`: Set to `false` to disable SSL verification for the Cyberbro URL. This is useful for self-signed certificates or local testing.
+- `API_PREFIX`: Set to a custom prefix for the Cyberbro API. This is useful if you have a custom API prefix in your Cyberbro instance.
+
+### Optional arguments
+
+- `--no_ssl_verify`: Disable SSL verification for the Cyberbro URL. This is useful for self-signed certificates or local testing.
+- `--api_prefix`: Set a custom prefix for the Cyberbro API. This is useful if you have a custom API prefix in your Cyberbro instance.
 
 ## Usage
 
@@ -193,6 +201,7 @@ The MCP server provides the following tools:
 | **is_analysis_complete** | Checks if the analysis for a given ID is finished. Returns status.                         | `analysis_id` (string)                         |
 | **get_analysis_results** | Retrieves the results of a completed analysis by ID.                                       | `analysis_id` (string)                         |
 | **get_engines**        | Lists available analysis engines supported by Cyberbro.                                      | *(none)*                                       |
+| **get_web_url** | Returns the web URL for the Cyberbro instance.                                             | `analysis_id`                                       |
 
 #### Tool Details
 
@@ -219,6 +228,12 @@ The MCP server provides the following tools:
   - **Purpose:** Lists all available analysis engines.
   - **Arguments:** None.
   - **Returns:** JSON with available engines.
+
+- **get_web_url**
+  - **Purpose:** Returns the web URL for the Cyberbro instance.
+  - **Arguments:**
+    - `analysis_id` (required): The ID of the analysis.
+  - **Returns:** JSON with the web URL.
 
 ## Example Queries
 
@@ -267,4 +282,5 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 ## Acknowledgments
 
 - [Model Context Protocol](https://modelcontextprotocol.io)
+- [MCP Python SDK](https://github.com/modelcontextprotocol/python-sdk)
 - [Cyberbro](https://github.com/stanfrbd/cyberbro)
