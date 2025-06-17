@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/stanfrbd-mcp-cyberbro-badge.png)](https://mseep.ai/app/stanfrbd-mcp-cyberbro)
+
 <h1 align="center">Cyberbro MCP Server</h1>
 
 <p align="center">
