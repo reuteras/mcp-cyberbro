@@ -136,6 +136,11 @@ ENGINES = [
         "supports": ["IP", "domain", "URL"],
         "description": "Checks Google common DNS records (A, AAAA, CNAME, NS, MX, TXT, PTR) for IP, domain, URL",
     },
+    {
+        "name": "crtsh",
+        "supports": ["domain", "URL"],
+        "description": "Checks crt.sh for domain, URL",
+    },
 ]
 
 mcp = FastMCP("CyberbroMCP")
