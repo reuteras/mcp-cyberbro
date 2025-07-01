@@ -10,16 +10,24 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
 
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v1
+        uses: docker/setup-buildx-action@v3
 
       - name: Log in to GitHub Container Registry
-        run: echo ${{ secrets.DEPLOYMENT_TOKEN }} | docker login ghcr.io -u ${{ github.repository_owner }} --password-stdin
+        run: echo ${{ secrets.DEPLOYMENT_TOKEN }} | docker login ghcr.io -u "${REPOSITORY_OWNER}" --password-stdin
+        env:
+          REPOSITORY_OWNER: ${{ github.repository_owner }}
 
       - name: Build Docker image
-        run: docker build -t ghcr.io/${{ github.repository_owner }}/mcp-cyberbro:latest .
+        run: docker build -t "ghcr.io/${REPOSITORY_OWNER}/mcp-cyberbro:latest" .
+        env:
+          REPOSITORY_OWNER: ${{ github.repository_owner }}
 
       - name: Push Docker image
-        run: docker push ghcr.io/${{ github.repository_owner }}/mcp-cyberbro:latest
+        run: docker push "ghcr.io/${REPOSITORY_OWNER}/mcp-cyberbro:latest"
+        env:
+          REPOSITORY_OWNER: ${{ github.repository_owner }}
